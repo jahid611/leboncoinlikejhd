@@ -1,0 +1,46 @@
+/* src/components/MyAnnonces.css */
+
+.page-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .announces-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .announce-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .announce-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .announce-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #fa5b00;
+  }
+  
+  .announce-card p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .announce-card small {
+    font-size: 0.85rem;
+    color: #888;
+  }
+  

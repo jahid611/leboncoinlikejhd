@@ -44,6 +44,8 @@ app.use('/api/messages', messagesRoutes);
 app.use('/api/comments', commentsRoutes);
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/uploads', express.static('uploads'));
+
 
 app.use('/api/blocks', blocksRoutes);
 app.use('/api/notifications', notificationsRoutes);
