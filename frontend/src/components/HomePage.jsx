@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Sidebar from "./Sidebar"
+import Header from "./Header"
 
 const HomePage = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -51,6 +52,7 @@ const HomePage = () => {
       backgroundColor: "#FAFAFA",
       minHeight: "100vh",
       marginLeft: sidebarOpen ? "280px" : "0",
+      marginTop: "70px", // Space for header
       transition: "margin-left 0.3s ease",
     },
     section: {
@@ -637,6 +639,7 @@ const HomePage = () => {
   return (
     <>
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+      <Header sidebarOpen={sidebarOpen} />
 
       <div style={styles.container}>
         {/* Hero Section */}
