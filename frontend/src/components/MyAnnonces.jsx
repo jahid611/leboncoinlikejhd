@@ -1,24 +1,23 @@
+// src/components/MyAnnonces.jsx
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import DashboardLayout from './DashboardLayout';
-import './AnnouncesList.css';
 import { AuthContext } from '../context/AuthContext';
+import './MyAnnonces.css';
 
-const AnnouncesList = () => {
+const MyAnnonces = () => {
   const [annonces, setAnnonces] = useState([]);
-  const { user, token } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    if (!user || !token) return;
-
     axios.get('http://localhost:5000/api/annonces/mine', {
       headers: {
-        Authorization: `Bearer ${token}`
+        'Authorization': `Bearer ${token}`
       }
     })
     .then(res => setAnnonces(res.data))
     .catch(err => console.error(err));
-  }, [user, token]);
+  }, [token]);
 
   return (
     <DashboardLayout>
@@ -37,4 +36,4 @@ const AnnouncesList = () => {
   );
 };
 
-export default AnnouncesList;
+export default MyAnnonces;

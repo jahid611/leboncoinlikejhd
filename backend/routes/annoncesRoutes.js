@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db'); // Import de la connexion MySQL (db.js)
+const checkAuth = require('../middleware/checkAuth.js'); // Assure-toi d'avoir créé ce middleware
+
 
 // 1. Récupérer toutes les annonces (GET /api/annonces)
 router.get('/', (req, res) => {
@@ -77,6 +79,18 @@ router.put('/:id', (req, res) => {
     res.json({ message: 'Annonce mise à jour avec succès' });
   });
 });
+
+router.get('/mine', checkAuth, (req, res) => {
+    const userId = req.user.id;
+    const sql = 'SELECT * FROM annonces WHERE user_id = ?';
+    db.query(sql, [userId], (err, results) => {
+      if (err) {
+        console.error('Erreur lors de la récupération des annonces de l’utilisateur:', err);
+        return res.status(500).json({ error: 'Erreur serveur' });
+      }
+      res.json(results);
+    });
+  });
 
 // 5. Supprimer une annonce (DELETE /api/annonces/:id)
 router.delete('/:id', (req, res) => {

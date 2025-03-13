@@ -33,7 +33,10 @@ exports.register = (req, res) => {
           console.error('Erreur lors de la création de l’utilisateur:', err);
           return res.status(500).json({ error: 'Erreur serveur' });
         }
-        res.status(201).json({ message: 'Utilisateur créé avec succès', id: result.insertId });
+        res.status(201).json({
+          message: 'Utilisateur créé avec succès',
+          id: result.insertId
+        });
       });
     });
   });
@@ -52,6 +55,7 @@ exports.login = (req, res) => {
       return res.status(401).json({ error: 'Email ou mot de passe incorrect' });
     }
     const user = results[0];
+
     // Comparer le mot de passe fourni avec le hash stocké
     bcrypt.compare(password, user.password, (err, isMatch) => {
       if (err) {
@@ -61,10 +65,26 @@ exports.login = (req, res) => {
       if (!isMatch) {
         return res.status(401).json({ error: 'Email ou mot de passe incorrect' });
       }
+
       // Générer un token JWT
-      const token = jwt.sign({ id: user.id, email: user.email, role: user.role },
-                              process.env.JWT_SECRET, { expiresIn: '1h' });
-      res.json({ message: 'Connexion réussie', token });
+      const token = jwt.sign(
+        { id: user.id, email: user.email, role: user.role },
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' }
+      );
+
+      // On renvoie user + token pour que le frontend puisse afficher le username
+      // Attention à ne pas renvoyer le champ 'password' !
+      res.json({
+        message: 'Connexion réussie',
+        token,
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          role: user.role
+        }
+      });
     });
   });
 };

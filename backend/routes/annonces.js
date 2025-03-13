@@ -10,16 +10,26 @@ const mysql = require('mysql');
 
 let db; // on l'initialisera dans server.js
 
+// routes/annonces.js
 router.get('/', (req, res) => {
-  const sql = 'SELECT * FROM annonces';
-  db.query(sql, (err, results) => {
-    if (err) {
-      console.error('Erreur lors de la récupération des annonces :', err);
-      return res.status(500).json({ error: 'Erreur serveur' });
+    const userId = req.query.user_id; // ex. /api/annonces?user_id=3
+    let sql = 'SELECT * FROM annonces';
+    let params = [];
+  
+    if (userId) {
+      sql += ' WHERE user_id = ?';
+      params.push(userId);
     }
-    res.json(results);
+  
+    db.query(sql, params, (err, results) => {
+      if (err) {
+        console.error('Erreur lors de la récupération des annonces :', err);
+        return res.status(500).json({ error: 'Erreur serveur' });
+      }
+      res.json(results);
+    });
   });
-});
+  
 
 router.get('/:id', (req, res) => {
   const annonceId = req.params.id;
@@ -93,6 +103,21 @@ router.delete('/:id', (req, res) => {
     res.json({ message: 'Annonce supprimée avec succès' });
   });
 });
+
+// routes/annonces.js
+router.get('/mine', checkAuth, (req, res) => {
+    const userId = req.user.id; // si checkAuth place user dans req.user
+    const sql = 'SELECT * FROM annonces WHERE user_id = ?';
+  
+    db.query(sql, [userId], (err, results) => {
+      if (err) {
+        console.error('Erreur lors de la récupération des annonces :', err);
+        return res.status(500).json({ error: 'Erreur serveur' });
+      }
+      res.json(results);
+    });
+  });
+  
 
 module.exports = (database) => {
   db = database;

@@ -1,0 +1,167 @@
+/* src/styles/HomePage.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .homepage-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* NAVBAR */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+  }
+  
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fa5b00;
+  }
+  
+  .navbar-search {
+    flex: 1;
+    display: flex;
+    margin: 0 20px;
+  }
+  
+  .navbar-search input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-right: none;
+  }
+  
+  .navbar-search button {
+    padding: 8px 16px;
+    background-color: #fa5b00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navbar-actions button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-deposer {
+    background-color: #fa5b00;
+    color: #fff;
+  }
+  
+  .btn-connecter {
+    background-color: #fff;
+    color: #fa5b00;
+    border: 1px solid #fa5b00;
+  }
+  
+  /* HERO SECTION */
+  .hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fafafa;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .hero-content {
+    max-width: 500px;
+    margin: 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-content p {
+    margin-bottom: 20px;
+  }
+  
+  .hero-content .btn-deposer {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  
+  .hero-image img {
+    width: 400px;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  /* TRENDS SECTION */
+  .trends-section {
+    padding: 20px;
+  }
+  
+  .trends-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .trend-items {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .trend-item {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .trend-item img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 5px;
+  }
+  
+  /* CATEGORIES SECTION */
+  .categories-section {
+    padding: 20px;
+  }
+  
+  .categories-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .categories-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .category-card {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .category-card img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 5px;
+  }
+  
+  /* FOOTER */
+  .footer {
+    background-color: #f3f3f3;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  

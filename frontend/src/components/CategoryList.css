@@ -1,0 +1,21 @@
+/* src/components/CategoryList.css */
+.page-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .categories-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .categories-table th,
+  .categories-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .categories-table th {
+    background: #fafafa;
+  }
+  
